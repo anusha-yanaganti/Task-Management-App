@@ -1,0 +1,272 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background:
+    url('https://static.vecteezy.com/system/resources/previews/010/666/559/non_2x/background-abstract-template-banner-with-gradient-color-design-with-liquid-shape-free-vector.jpg'), 
+    url('https://img.freepik.com/free-vector/appointment-booking-with-smartphone_23-2148554312.jpg?t=st=1738049158~exp=1738052758~hmac=d340d8edec3a4cd4b71677b2bc5523b62c1ff9b666557ccff8fc5752134ca84e&w=740') no-repeat;
+    background-size: cover,400px; /* Adjust size (e.g., '300px', 'cover', 'contain') */
+    background-position: center,; /* Position the image (bottom-right corner) */
+    position: relative; /* Make body a positioned element */
+    background-repeat: no-repeat, no-repeat;
+    height: 100vh;
+}
+
+  .container {
+
+    max-width: 740px;
+    margin: 65px auto;
+    background: #f5ecff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 
+        0 4px 6px rgba(166, 87, 244, 0.1), /* Soft outer shadow */
+        0 1px 3px rgba(161, 39, 237, 0.2), /* Slight inner shadow */
+        inset 0 1px 0 rgba(222, 177, 246, 0.5), /* Highlight at the top for 3D effect */
+        0 0 15px rgba(187, 102, 213, 0.5); /* Glow effect */
+    transform: translateZ(0); /* Fix for better rendering on some browsers */
+    position: relative;
+    
+  }
+
+  #task-list-container {
+    height: 300px; /* Set the height of the task list container */
+    overflow-y: auto; /* Enable vertical scrolling */
+    border: 1px solid #ddd; /* Optional border */
+    padding: 10px;
+  }
+
+  h1 {
+    text-align: center;
+    margin-bottom: 20px;
+    font-family: 'Merriweather', serif; /* Use the custom font */
+    font-size: 38px;
+    font-weight: bold;
+    color: #333;
+  }
+  
+  form {
+    display: flex;
+    flex-wrap: wrap; 
+    gap: 10px;
+    margin-bottom: 20px;
+    align-items: center;
+  }
+  
+  form input, form select, form button {
+    flex: 1; /* Allow input and select to stretch evenly */
+    padding: 10px;
+    font-size: 1rem;
+  }
+
+  form .button-row {
+    width: 100%; /* Ensure the button row takes up the full width */
+    text-align: center; /* Center-align the button */
+  }
+  
+  form button {
+    padding: 10px 20px;
+    font-size: 1rem;
+    background: #5c67f2;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  form button:hover {
+    background: #4b56d9;
+  }
+  
+  .filters {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    margin-bottom: 20px;
+  }
+  
+  .filters button {
+    background: none;
+    border: none;
+    font-size: 1rem;
+    color: #676767; /* Default text color */
+    position: relative;
+    cursor: pointer;
+    font-weight: bold;
+    padding: 5px 0;
+    outline: none;
+  }
+
+
+.filters button::after {
+    content: "";
+    display: block;
+    width: 0;
+    height: 2px;
+    background: #5c67f2; /* Underline color */
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    transition: width 0.3s ease; /* Smooth animation */
+  }
+  .filters button:hover::after {
+    width: 70%; /* Full underline on hover */
+  }
+  
+  .filters button:focus {
+    color: #5c67f2; /* Optional: Change color when focused/active */
+  }
+
+  
+  .filters button:hover {
+    color: #8a8989;
+  }
+  
+  #task-list {
+    list-style: none;
+    padding: 0;
+    
+  }
+  
+  .task-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ddd; /* Fallback border */
+    border-radius: 5px;
+    
+    gap: 10px; /* Add spacing between the complete icon and content */
+    position: relative; /* For pseudo-elements */
+  }
+  
+  .task-item::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 10px; /* Top border height */
+    width: 100%;
+    background-color: var(--task-border-color, black); /* Use CSS variable for top border */
+  }
+  
+  .task-item::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 4px; /* Left border width */
+    background-color: var(--task-border-color, black); /* Use CSS variable for left border */
+  }
+  .task-item .complete-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 1.5rem;
+    position: relative;
+    color: black; /* Default black border for the circle */
+  }
+  
+  .task-item .complete-btn i.fa-circle {
+    color: transparent; /* Default: Circle is transparent inside */
+    border: 2px solid black; /* Adds black border to the circle */
+    border-radius: 50%; 
+    display: inline-block;
+    width: 24px; 
+    height: 24px; 
+  }
+  
+  .task-item .complete-btn i.fa-check-circle {
+    color: #28a745; /* Green for filled circle with tick mark */
+    border: 2px solid black; /* Black border remains */
+    border-radius: 50%;
+    display: inline-block;
+    width: 24px; /* Same size as the circle */
+    height: 24px;
+    background-color: #28a745; /* Green background inside */
+  }
+  
+  .task-item .complete-btn i.fa-check-circle::before {
+    content: '\f00c'; /* FontAwesome checkmark icon */
+    font-family: 'Font Awesome 5 Free';
+    font-weight: 900;
+    color: white; /* Tick mark color */
+    
+    font-size: 1rem; /* Size of the tick mark */
+    position: absolute;
+    top: 45%; /* Center vertically */
+    left: 50%; /* Center horizontally */
+    transform: translate(-50%, -50%); /* Adjust for perfect centering */
+  }
+  
+  /* Hover effect */
+  .task-item .complete-btn:hover {
+    opacity: 0.8;
+  }
+  
+  .task-content {
+    flex-grow: 1;
+  }
+  
+  .task-content p {
+    margin: 4px 0;
+    font-size: 0.9rem;
+  }
+  
+  .task-name {
+    font-weight: bold;
+    font-size: 1.1rem;
+  }
+  
+  .task-due-date {
+    color: #515151;
+  }
+  
+  .task-priority {
+    color: #717171;
+  }
+
+  /* .task-item.completed {
+    background-color: #d4edda;
+  } */
+  
+  .task-actions button {
+    background: none;
+  border: none;
+  padding: 5px;
+  cursor: pointer;
+  color: #5c67f2;
+  font-size: 1.2rem;
+  }
+  
+  
+ 
+.task-actions .fa-trash {
+    color: #f44336;
+    
+  }
+  
+  .task-actions .fa-edit {
+    color: rgb(0, 0, 0);
+    border-color: #333;
+  }
+
+  .task-actions .fa-check-circle {
+    color: #28a745;
+  }
+  
+  .task-actions button:hover {
+    opacity: 0.9;
+    color: #4b56d9;
+  }
+
+  .task-actions .fas, 
+.task-item .complete-btn .fas {
+  font-size: 1.4rem; /* Adjust the size as needed */
+}
+
+
+  
+
